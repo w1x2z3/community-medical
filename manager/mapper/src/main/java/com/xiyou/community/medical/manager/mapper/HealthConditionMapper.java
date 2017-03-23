@@ -1,8 +1,8 @@
 package com.xiyou.community.medical.manager.mapper;
 
 import org.apache.ibatis.annotations.Param;
-import pojo.HealthCondition;
-import pojo.HealthConditionExample;
+import com.xiyou.community.medical.manager.pojo.HealthCondition;
+import com.xiyou.community.medical.manager.pojo.HealthConditionExample;
 
 import java.util.List;
 

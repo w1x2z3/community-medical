@@ -1,8 +1,8 @@
 package com.xiyou.community.medical.manager.mapper;
 
 import org.apache.ibatis.annotations.Param;
-import pojo.Druginfo;
-import pojo.DruginfoExample;
+import com.xiyou.community.medical.manager.pojo.Druginfo;
+import com.xiyou.community.medical.manager.pojo.DruginfoExample;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
 package com.xiyou.community.medical.manager.mapper;
 
 import org.apache.ibatis.annotations.Param;
-import pojo.PrescribeInput;
-import pojo.PrescribeInputExample;
+import com.xiyou.community.medical.manager.pojo.PrescribeInput;
+import com.xiyou.community.medical.manager.pojo.PrescribeInputExample;
 
 import java.util.List;
 
