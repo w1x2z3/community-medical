@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/community-medical.iml" filepath="$PROJECT_DIR$/community-medical.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/community-medical-common.iml" filepath="$PROJECT_DIR$/common/community-medical-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/manager/community-medical-manager.iml" filepath="$PROJECT_DIR$/manager/community-medical-manager.iml" />
       <module fileurl="file://$PROJECT_DIR$/manager/mapper/community-medical-manager-mapper.iml" filepath="$PROJECT_DIR$/manager/mapper/community-medical-manager-mapper.iml" />
       <module fileurl="file://$PROJECT_DIR$/manager/pojo/community-medical-manager-pojo.iml" filepath="$PROJECT_DIR$/manager/pojo/community-medical-manager-pojo.iml" />

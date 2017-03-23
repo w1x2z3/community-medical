@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.DruginfoMapper" >
+  <resultMap id="BaseResultMap" type="pojo.Druginfo" >
+    <id column="drug_number" property="drugNumber" jdbcType="VARCHAR" />
+    <result column="drug_name" property="drugName" jdbcType="VARCHAR" />
+    <result column="dosage_description" property="dosageDescription" jdbcType="VARCHAR" />
+    <result column="taboo_description" property="tabooDescription" jdbcType="VARCHAR" />
+    <result column="drug_price" property="drugPrice" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    drug_number, drug_name, dosage_description, taboo_description, drug_price
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pojo.DruginfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from druginfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from druginfo
+    where drug_number = #{drugNumber,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from druginfo
+    where drug_number = #{drugNumber,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="pojo.DruginfoExample" >
+    delete from druginfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pojo.Druginfo" >
+    insert into druginfo (drug_number, drug_name, dosage_description, 
+      taboo_description, drug_price)
+    values (#{drugNumber,jdbcType=VARCHAR}, #{drugName,jdbcType=VARCHAR}, #{dosageDescription,jdbcType=VARCHAR}, 
+      #{tabooDescription,jdbcType=VARCHAR}, #{drugPrice,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.Druginfo" >
+    insert into druginfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="drugNumber != null" >
+        drug_number,
+      </if>
+      <if test="drugName != null" >
+        drug_name,
+      </if>
+      <if test="dosageDescription != null" >
+        dosage_description,
+      </if>
+      <if test="tabooDescription != null" >
+        taboo_description,
+      </if>
+      <if test="drugPrice != null" >
+        drug_price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="drugNumber != null" >
+        #{drugNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="drugName != null" >
+        #{drugName,jdbcType=VARCHAR},
+      </if>
+      <if test="dosageDescription != null" >
+        #{dosageDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="tabooDescription != null" >
+        #{tabooDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="drugPrice != null" >
+        #{drugPrice,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pojo.DruginfoExample" resultType="java.lang.Integer" >
+    select count(*) from druginfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update druginfo
+    <set >
+      <if test="record.drugNumber != null" >
+        drug_number = #{record.drugNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.drugName != null" >
+        drug_name = #{record.drugName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dosageDescription != null" >
+        dosage_description = #{record.dosageDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tabooDescription != null" >
+        taboo_description = #{record.tabooDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.drugPrice != null" >
+        drug_price = #{record.drugPrice,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update druginfo
+    set drug_number = #{record.drugNumber,jdbcType=VARCHAR},
+      drug_name = #{record.drugName,jdbcType=VARCHAR},
+      dosage_description = #{record.dosageDescription,jdbcType=VARCHAR},
+      taboo_description = #{record.tabooDescription,jdbcType=VARCHAR},
+      drug_price = #{record.drugPrice,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.Druginfo" >
+    update druginfo
+    <set >
+      <if test="drugName != null" >
+        drug_name = #{drugName,jdbcType=VARCHAR},
+      </if>
+      <if test="dosageDescription != null" >
+        dosage_description = #{dosageDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="tabooDescription != null" >
+        taboo_description = #{tabooDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="drugPrice != null" >
+        drug_price = #{drugPrice,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where drug_number = #{drugNumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.Druginfo" >
+    update druginfo
+    set drug_name = #{drugName,jdbcType=VARCHAR},
+      dosage_description = #{dosageDescription,jdbcType=VARCHAR},
+      taboo_description = #{tabooDescription,jdbcType=VARCHAR},
+      drug_price = #{drugPrice,jdbcType=DECIMAL}
+    where drug_number = #{drugNumber,jdbcType=VARCHAR}
+  </update>
+</mapper>

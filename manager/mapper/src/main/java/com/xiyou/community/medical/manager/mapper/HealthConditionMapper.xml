@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.HealthConditionMapper" >
+  <resultMap id="BaseResultMap" type="pojo.HealthCondition" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="physical_condition" property="physicalCondition" jdbcType="VARCHAR" />
+    <result column="blood_pressure" property="bloodPressure" jdbcType="INTEGER" />
+    <result column="heart_rate" property="heartRate" jdbcType="VARCHAR" />
+    <result column="is_cardvascular" property="isCardvascular" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    user_id, physical_condition, blood_pressure, heart_rate, is_cardvascular
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pojo.HealthConditionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from health_condition
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from health_condition
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from health_condition
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pojo.HealthConditionExample" >
+    delete from health_condition
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pojo.HealthCondition" >
+    insert into health_condition (user_id, physical_condition, blood_pressure, 
+      heart_rate, is_cardvascular)
+    values (#{userId,jdbcType=INTEGER}, #{physicalCondition,jdbcType=VARCHAR}, #{bloodPressure,jdbcType=INTEGER}, 
+      #{heartRate,jdbcType=VARCHAR}, #{isCardvascular,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.HealthCondition" >
+    insert into health_condition
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="physicalCondition != null" >
+        physical_condition,
+      </if>
+      <if test="bloodPressure != null" >
+        blood_pressure,
+      </if>
+      <if test="heartRate != null" >
+        heart_rate,
+      </if>
+      <if test="isCardvascular != null" >
+        is_cardvascular,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="physicalCondition != null" >
+        #{physicalCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodPressure != null" >
+        #{bloodPressure,jdbcType=INTEGER},
+      </if>
+      <if test="heartRate != null" >
+        #{heartRate,jdbcType=VARCHAR},
+      </if>
+      <if test="isCardvascular != null" >
+        #{isCardvascular,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pojo.HealthConditionExample" resultType="java.lang.Integer" >
+    select count(*) from health_condition
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update health_condition
+    <set >
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.physicalCondition != null" >
+        physical_condition = #{record.physicalCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bloodPressure != null" >
+        blood_pressure = #{record.bloodPressure,jdbcType=INTEGER},
+      </if>
+      <if test="record.heartRate != null" >
+        heart_rate = #{record.heartRate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isCardvascular != null" >
+        is_cardvascular = #{record.isCardvascular,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update health_condition
+    set user_id = #{record.userId,jdbcType=INTEGER},
+      physical_condition = #{record.physicalCondition,jdbcType=VARCHAR},
+      blood_pressure = #{record.bloodPressure,jdbcType=INTEGER},
+      heart_rate = #{record.heartRate,jdbcType=VARCHAR},
+      is_cardvascular = #{record.isCardvascular,jdbcType=BIT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.HealthCondition" >
+    update health_condition
+    <set >
+      <if test="physicalCondition != null" >
+        physical_condition = #{physicalCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodPressure != null" >
+        blood_pressure = #{bloodPressure,jdbcType=INTEGER},
+      </if>
+      <if test="heartRate != null" >
+        heart_rate = #{heartRate,jdbcType=VARCHAR},
+      </if>
+      <if test="isCardvascular != null" >
+        is_cardvascular = #{isCardvascular,jdbcType=BIT},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.HealthCondition" >
+    update health_condition
+    set physical_condition = #{physicalCondition,jdbcType=VARCHAR},
+      blood_pressure = #{bloodPressure,jdbcType=INTEGER},
+      heart_rate = #{heartRate,jdbcType=VARCHAR},
+      is_cardvascular = #{isCardvascular,jdbcType=BIT}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>
