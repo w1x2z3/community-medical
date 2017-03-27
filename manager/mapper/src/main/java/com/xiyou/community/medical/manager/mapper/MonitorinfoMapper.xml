@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="mapper.MonitorinfoMapper" >
-  <resultMap id="BaseResultMap" type="pojo.Monitorinfo" >
+<mapper namespace="com.xiyou.community.medical.manager.mapper.MonitorinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.xiyou.community.medical.manager.pojo.Monitorinfo" >
     <id column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="mail_remind" property="mailRemind" jdbcType="BIT" />
     <result column="phone_remind" property="phoneRemind" jdbcType="BIT" />
@@ -67,7 +67,7 @@
   <sql id="Base_Column_List" >
     user_id, mail_remind, phone_remind
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pojo.MonitorinfoExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xiyou.community.medical.manager.pojo.MonitorinfoExample" >
     select
     <if test="distinct" >
       distinct
@@ -91,19 +91,19 @@
     delete from monitorinfo
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="pojo.MonitorinfoExample" >
+  <delete id="deleteByExample" parameterType="com.xiyou.community.medical.manager.pojo.MonitorinfoExample" >
     delete from monitorinfo
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="pojo.Monitorinfo" >
+  <insert id="insert" parameterType="com.xiyou.community.medical.manager.pojo.Monitorinfo" >
     insert into monitorinfo (user_id, mail_remind, phone_remind
       )
     values (#{userId,jdbcType=INTEGER}, #{mailRemind,jdbcType=BIT}, #{phoneRemind,jdbcType=BIT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="pojo.Monitorinfo" >
+  <insert id="insertSelective" parameterType="com.xiyou.community.medical.manager.pojo.Monitorinfo" >
     insert into monitorinfo
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
@@ -128,7 +128,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="pojo.MonitorinfoExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.xiyou.community.medical.manager.pojo.MonitorinfoExample" resultType="java.lang.Integer" >
     select count(*) from monitorinfo
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -160,7 +160,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="pojo.Monitorinfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiyou.community.medical.manager.pojo.Monitorinfo" >
     update monitorinfo
     <set >
       <if test="mailRemind != null" >
@@ -172,7 +172,7 @@
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="pojo.Monitorinfo" >
+  <update id="updateByPrimaryKey" parameterType="com.xiyou.community.medical.manager.pojo.Monitorinfo" >
     update monitorinfo
     set mail_remind = #{mailRemind,jdbcType=BIT},
       phone_remind = #{phoneRemind,jdbcType=BIT}

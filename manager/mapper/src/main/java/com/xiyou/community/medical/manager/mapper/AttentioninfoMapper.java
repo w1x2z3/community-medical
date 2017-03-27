@@ -13,7 +13,7 @@ public interface AttentioninfoMapper {
 
     int deleteByPrimaryKey(Integer userId);
 
-    int insert(Attentioninfo record);
+    void insert(Attentioninfo record);
 
     int insertSelective(Attentioninfo record);
 

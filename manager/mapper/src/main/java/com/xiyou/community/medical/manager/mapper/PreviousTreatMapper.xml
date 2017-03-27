@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="mapper.PreviousTreatMapper" >
-  <resultMap id="BaseResultMap" type="pojo.PreviousTreat" >
+<mapper namespace="com.xiyou.community.medical.manager.mapper.PreviousTreatMapper" >
+  <resultMap id="BaseResultMap" type="com.xiyou.community.medical.manager.pojo.PreviousTreat" >
     <id column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="the_disease" property="theDisease" jdbcType="VARCHAR" />
     <result column="diagnosis_time" property="diagnosisTime" jdbcType="TIMESTAMP" />
@@ -72,7 +72,7 @@
     user_id, the_disease, diagnosis_time, threat_address, is_cure, present_situation, 
     responsible_doctor
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pojo.PreviousTreatExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xiyou.community.medical.manager.pojo.PreviousTreatExample" >
     select
     <if test="distinct" >
       distinct
@@ -96,13 +96,13 @@
     delete from previous_treat
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="pojo.PreviousTreatExample" >
+  <delete id="deleteByExample" parameterType="com.xiyou.community.medical.manager.pojo.PreviousTreatExample" >
     delete from previous_treat
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="pojo.PreviousTreat" >
+  <insert id="insert" parameterType="com.xiyou.community.medical.manager.pojo.PreviousTreat" >
     insert into previous_treat (user_id, the_disease, diagnosis_time, 
       threat_address, is_cure, present_situation, 
       responsible_doctor)
@@ -110,7 +110,7 @@
       #{threatAddress,jdbcType=VARCHAR}, #{isCure,jdbcType=BIT}, #{presentSituation,jdbcType=VARCHAR}, 
       #{responsibleDoctor,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="pojo.PreviousTreat" >
+  <insert id="insertSelective" parameterType="com.xiyou.community.medical.manager.pojo.PreviousTreat" >
     insert into previous_treat
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
@@ -159,7 +159,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="pojo.PreviousTreatExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.xiyou.community.medical.manager.pojo.PreviousTreatExample" resultType="java.lang.Integer" >
     select count(*) from previous_treat
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -207,7 +207,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="pojo.PreviousTreat" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiyou.community.medical.manager.pojo.PreviousTreat" >
     update previous_treat
     <set >
       <if test="theDisease != null" >
@@ -231,7 +231,7 @@
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="pojo.PreviousTreat" >
+  <update id="updateByPrimaryKey" parameterType="com.xiyou.community.medical.manager.pojo.PreviousTreat" >
     update previous_treat
     set the_disease = #{theDisease,jdbcType=VARCHAR},
       diagnosis_time = #{diagnosisTime,jdbcType=TIMESTAMP},

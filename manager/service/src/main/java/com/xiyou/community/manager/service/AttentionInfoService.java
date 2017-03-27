@@ -1,6 +1,7 @@
 package com.xiyou.community.manager.service;
 
 import com.xiyou.community.medical.manager.pojo.Attentioninfo;
+import org.springframework.stereotype.Service;
 
 /**
  * @author wangxinzhi.
@@ -9,6 +10,7 @@ import com.xiyou.community.medical.manager.pojo.Attentioninfo;
  * @14:57
  * @Copyright: Xiyou wangxinzhi
  */
-public interface AttentionInfoService {
-    int insert(Attentioninfo attentioninfo);
+@Service
+public interface AttentioninfoService {
+    void insert(Attentioninfo attentioninfo);
 }

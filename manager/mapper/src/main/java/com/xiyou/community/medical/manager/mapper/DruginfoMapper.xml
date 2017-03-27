@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="mapper.DruginfoMapper" >
-  <resultMap id="BaseResultMap" type="pojo.Druginfo" >
+<mapper namespace="com.xiyou.community.medical.manager.mapper.DruginfoMapper" >
+  <resultMap id="BaseResultMap" type="com.xiyou.community.medical.manager.pojo.Druginfo" >
     <id column="drug_number" property="drugNumber" jdbcType="VARCHAR" />
     <result column="drug_name" property="drugName" jdbcType="VARCHAR" />
     <result column="dosage_description" property="dosageDescription" jdbcType="VARCHAR" />
@@ -69,7 +69,7 @@
   <sql id="Base_Column_List" >
     drug_number, drug_name, dosage_description, taboo_description, drug_price
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pojo.DruginfoExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xiyou.community.medical.manager.pojo.DruginfoExample" >
     select
     <if test="distinct" >
       distinct
@@ -93,19 +93,19 @@
     delete from druginfo
     where drug_number = #{drugNumber,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="pojo.DruginfoExample" >
+  <delete id="deleteByExample" parameterType="com.xiyou.community.medical.manager.pojo.DruginfoExample" >
     delete from druginfo
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="pojo.Druginfo" >
+  <insert id="insert" parameterType="com.xiyou.community.medical.manager.pojo.Druginfo" >
     insert into druginfo (drug_number, drug_name, dosage_description, 
       taboo_description, drug_price)
     values (#{drugNumber,jdbcType=VARCHAR}, #{drugName,jdbcType=VARCHAR}, #{dosageDescription,jdbcType=VARCHAR}, 
       #{tabooDescription,jdbcType=VARCHAR}, #{drugPrice,jdbcType=DECIMAL})
   </insert>
-  <insert id="insertSelective" parameterType="pojo.Druginfo" >
+  <insert id="insertSelective" parameterType="com.xiyou.community.medical.manager.pojo.Druginfo" >
     insert into druginfo
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="drugNumber != null" >
@@ -142,7 +142,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="pojo.DruginfoExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.xiyou.community.medical.manager.pojo.DruginfoExample" resultType="java.lang.Integer" >
     select count(*) from druginfo
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -182,7 +182,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="pojo.Druginfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiyou.community.medical.manager.pojo.Druginfo" >
     update druginfo
     <set >
       <if test="drugName != null" >
@@ -200,7 +200,7 @@
     </set>
     where drug_number = #{drugNumber,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="pojo.Druginfo" >
+  <update id="updateByPrimaryKey" parameterType="com.xiyou.community.medical.manager.pojo.Druginfo" >
     update druginfo
     set drug_name = #{drugName,jdbcType=VARCHAR},
       dosage_description = #{dosageDescription,jdbcType=VARCHAR},

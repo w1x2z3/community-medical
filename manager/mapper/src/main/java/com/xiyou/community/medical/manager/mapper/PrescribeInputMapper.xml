@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="mapper.PrescribeInputMapper" >
-  <resultMap id="BaseResultMap" type="pojo.PrescribeInput" >
+<mapper namespace="com.xiyou.community.medical.manager.mapper.PrescribeInputMapper" >
+  <resultMap id="BaseResultMap" type="com.xiyou.community.medical.manager.pojo.PrescribeInput" >
     <id column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="patien_name" property="patienName" jdbcType="VARCHAR" />
     <result column="is_infusion" property="isInfusion" jdbcType="BIT" />
@@ -71,7 +71,7 @@
   <sql id="Base_Column_List" >
     user_id, patien_name, is_infusion, diagnosis_disease, drug_name, drug_number, total_cost
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pojo.PrescribeInputExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xiyou.community.medical.manager.pojo.PrescribeInputExample" >
     select
     <if test="distinct" >
       distinct
@@ -95,13 +95,13 @@
     delete from prescribe_input
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="pojo.PrescribeInputExample" >
+  <delete id="deleteByExample" parameterType="com.xiyou.community.medical.manager.pojo.PrescribeInputExample" >
     delete from prescribe_input
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="pojo.PrescribeInput" >
+  <insert id="insert" parameterType="com.xiyou.community.medical.manager.pojo.PrescribeInput" >
     insert into prescribe_input (user_id, patien_name, is_infusion, 
       diagnosis_disease, drug_name, drug_number, 
       total_cost)
@@ -109,7 +109,7 @@
       #{diagnosisDisease,jdbcType=VARCHAR}, #{drugName,jdbcType=VARCHAR}, #{drugNumber,jdbcType=VARCHAR}, 
       #{totalCost,jdbcType=DECIMAL})
   </insert>
-  <insert id="insertSelective" parameterType="pojo.PrescribeInput" >
+  <insert id="insertSelective" parameterType="com.xiyou.community.medical.manager.pojo.PrescribeInput" >
     insert into prescribe_input
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
@@ -158,7 +158,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="pojo.PrescribeInputExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.xiyou.community.medical.manager.pojo.PrescribeInputExample" resultType="java.lang.Integer" >
     select count(*) from prescribe_input
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -206,7 +206,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="pojo.PrescribeInput" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiyou.community.medical.manager.pojo.PrescribeInput" >
     update prescribe_input
     <set >
       <if test="patienName != null" >
@@ -230,7 +230,7 @@
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="pojo.PrescribeInput" >
+  <update id="updateByPrimaryKey" parameterType="com.xiyou.community.medical.manager.pojo.PrescribeInput" >
     update prescribe_input
     set patien_name = #{patienName,jdbcType=VARCHAR},
       is_infusion = #{isInfusion,jdbcType=BIT},

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="mapper.LifestyleMapper" >
-  <resultMap id="BaseResultMap" type="pojo.Lifestyle" >
+<mapper namespace="com.xiyou.community.medical.manager.mapper.LifestyleMapper" >
+  <resultMap id="BaseResultMap" type="com.xiyou.community.medical.manager.pojo.Lifestyle" >
     <id column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="drink_condition" property="drinkCondition" jdbcType="VARCHAR" />
     <result column="smoking_condition" property="smokingCondition" jdbcType="VARCHAR" />
@@ -72,7 +72,7 @@
     user_id, drink_condition, smoking_condition, blood_pressure_condition, exercise_condition, 
     meals_condition, sleep_condition
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pojo.LifestyleExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xiyou.community.medical.manager.pojo.LifestyleExample" >
     select
     <if test="distinct" >
       distinct
@@ -96,13 +96,13 @@
     delete from lifestyle
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="pojo.LifestyleExample" >
+  <delete id="deleteByExample" parameterType="com.xiyou.community.medical.manager.pojo.LifestyleExample" >
     delete from lifestyle
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="pojo.Lifestyle" >
+  <insert id="insert" parameterType="com.xiyou.community.medical.manager.pojo.Lifestyle" >
     insert into lifestyle (user_id, drink_condition, smoking_condition, 
       blood_pressure_condition, exercise_condition, 
       meals_condition, sleep_condition)
@@ -110,7 +110,7 @@
       #{bloodPressureCondition,jdbcType=VARCHAR}, #{exerciseCondition,jdbcType=VARCHAR}, 
       #{mealsCondition,jdbcType=VARCHAR}, #{sleepCondition,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="pojo.Lifestyle" >
+  <insert id="insertSelective" parameterType="com.xiyou.community.medical.manager.pojo.Lifestyle" >
     insert into lifestyle
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
@@ -159,7 +159,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="pojo.LifestyleExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.xiyou.community.medical.manager.pojo.LifestyleExample" resultType="java.lang.Integer" >
     select count(*) from lifestyle
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -207,7 +207,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="pojo.Lifestyle" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiyou.community.medical.manager.pojo.Lifestyle" >
     update lifestyle
     <set >
       <if test="drinkCondition != null" >
@@ -231,7 +231,7 @@
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="pojo.Lifestyle" >
+  <update id="updateByPrimaryKey" parameterType="com.xiyou.community.medical.manager.pojo.Lifestyle" >
     update lifestyle
     set drink_condition = #{drinkCondition,jdbcType=VARCHAR},
       smoking_condition = #{smokingCondition,jdbcType=VARCHAR},

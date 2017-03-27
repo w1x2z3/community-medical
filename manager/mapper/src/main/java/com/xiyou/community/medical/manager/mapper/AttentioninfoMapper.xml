@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="mapper.AttentioninfoMapper" >
-  <resultMap id="BaseResultMap" type="pojo.Attentioninfo" >
+<mapper namespace="com.xiyou.community.medical.manager.mapper.AttentioninfoMapper" >
+  <resultMap id="BaseResultMap" type="com.xiyou.community.medical.manager.pojo.Attentioninfo" >
     <id column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="the_allergy" property="theAllergy" jdbcType="VARCHAR" />
     <result column="disease_history" property="diseaseHistory" jdbcType="VARCHAR" />
@@ -68,7 +68,7 @@
   <sql id="Base_Column_List" >
     user_id, the_allergy, disease_history, present_situation
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pojo.AttentioninfoExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xiyou.community.medical.manager.pojo.AttentioninfoExample" >
     select
     <if test="distinct" >
       distinct
@@ -92,19 +92,19 @@
     delete from attentioninfo
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="pojo.AttentioninfoExample" >
+  <delete id="deleteByExample" parameterType="com.xiyou.community.medical.manager.pojo.AttentioninfoExample" >
     delete from attentioninfo
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="pojo.Attentioninfo" >
+  <insert id="insert" parameterType="com.xiyou.community.medical.manager.pojo.Attentioninfo" >
     insert into attentioninfo (user_id, the_allergy, disease_history, 
       present_situation)
     values (#{userId,jdbcType=INTEGER}, #{theAllergy,jdbcType=VARCHAR}, #{diseaseHistory,jdbcType=VARCHAR}, 
       #{presentSituation,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="pojo.Attentioninfo" >
+  <insert id="insertSelective" parameterType="com.xiyou.community.medical.manager.pojo.Attentioninfo" >
     insert into attentioninfo
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
@@ -135,7 +135,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="pojo.AttentioninfoExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.xiyou.community.medical.manager.pojo.AttentioninfoExample" resultType="java.lang.Integer" >
     select count(*) from attentioninfo
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -171,7 +171,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="pojo.Attentioninfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiyou.community.medical.manager.pojo.Attentioninfo" >
     update attentioninfo
     <set >
       <if test="theAllergy != null" >
@@ -186,7 +186,7 @@
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="pojo.Attentioninfo" >
+  <update id="updateByPrimaryKey" parameterType="com.xiyou.community.medical.manager.pojo.Attentioninfo" >
     update attentioninfo
     set the_allergy = #{theAllergy,jdbcType=VARCHAR},
       disease_history = #{diseaseHistory,jdbcType=VARCHAR},

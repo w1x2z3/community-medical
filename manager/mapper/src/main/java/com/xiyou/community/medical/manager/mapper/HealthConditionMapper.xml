@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="mapper.HealthConditionMapper" >
-  <resultMap id="BaseResultMap" type="pojo.HealthCondition" >
+<mapper namespace="com.xiyou.community.medical.manager.mapper.HealthConditionMapper" >
+  <resultMap id="BaseResultMap" type="com.xiyou.community.medical.manager.pojo.HealthCondition" >
     <id column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="physical_condition" property="physicalCondition" jdbcType="VARCHAR" />
     <result column="blood_pressure" property="bloodPressure" jdbcType="INTEGER" />
@@ -69,7 +69,7 @@
   <sql id="Base_Column_List" >
     user_id, physical_condition, blood_pressure, heart_rate, is_cardvascular
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pojo.HealthConditionExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xiyou.community.medical.manager.pojo.HealthConditionExample" >
     select
     <if test="distinct" >
       distinct
@@ -93,19 +93,19 @@
     delete from health_condition
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="pojo.HealthConditionExample" >
+  <delete id="deleteByExample" parameterType="com.xiyou.community.medical.manager.pojo.HealthConditionExample" >
     delete from health_condition
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="pojo.HealthCondition" >
+  <insert id="insert" parameterType="com.xiyou.community.medical.manager.pojo.HealthCondition" >
     insert into health_condition (user_id, physical_condition, blood_pressure, 
       heart_rate, is_cardvascular)
     values (#{userId,jdbcType=INTEGER}, #{physicalCondition,jdbcType=VARCHAR}, #{bloodPressure,jdbcType=INTEGER}, 
       #{heartRate,jdbcType=VARCHAR}, #{isCardvascular,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="pojo.HealthCondition" >
+  <insert id="insertSelective" parameterType="com.xiyou.community.medical.manager.pojo.HealthCondition" >
     insert into health_condition
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
@@ -142,7 +142,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="pojo.HealthConditionExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.xiyou.community.medical.manager.pojo.HealthConditionExample" resultType="java.lang.Integer" >
     select count(*) from health_condition
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -182,7 +182,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="pojo.HealthCondition" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiyou.community.medical.manager.pojo.HealthCondition" >
     update health_condition
     <set >
       <if test="physicalCondition != null" >
@@ -200,7 +200,7 @@
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="pojo.HealthCondition" >
+  <update id="updateByPrimaryKey" parameterType="com.xiyou.community.medical.manager.pojo.HealthCondition" >
     update health_condition
     set physical_condition = #{physicalCondition,jdbcType=VARCHAR},
       blood_pressure = #{bloodPressure,jdbcType=INTEGER},
