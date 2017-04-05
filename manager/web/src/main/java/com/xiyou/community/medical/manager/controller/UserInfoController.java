@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 @Controller
 @RequestMapping("/index")
 public class UserInfoController {
-    private Logger logger = Logger
+
 
     @Autowired
     private UserInfoService userInfoService;
