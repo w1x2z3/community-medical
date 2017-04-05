@@ -1,5 +1,7 @@
 package com.xiyou.community.manager.service;
 
+import com.xiyou.community.medical.manager.pojo.Userinfo;
+
 /**
  * @author wangxinzhi.
  * @Description:
@@ -8,4 +10,5 @@ package com.xiyou.community.manager.service;
  * @Copyright: Xiyou wangxinzhi
  */
 public interface UserInfoService {
+    Userinfo selectByPrimaryKey(Integer userId);
 }
