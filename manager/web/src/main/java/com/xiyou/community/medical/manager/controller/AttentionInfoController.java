@@ -30,4 +30,5 @@ public class AttentioninfoController {
         attentioninfo.setPresentSituation("暂无");
         attentioninfoService.insert(attentioninfo);
     }
+
 }

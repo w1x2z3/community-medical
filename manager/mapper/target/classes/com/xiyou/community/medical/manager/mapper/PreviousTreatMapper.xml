@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xiyou.community.medical.manager.mapper.PreviousTreatMapper" >
+  <resultMap id="BaseResultMap" type="com.xiyou.community.medical.manager.pojo.PreviousTreat" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="the_disease" property="theDisease" jdbcType="VARCHAR" />
+    <result column="diagnosis_time" property="diagnosisTime" jdbcType="TIMESTAMP" />
+    <result column="threat_address" property="threatAddress" jdbcType="VARCHAR" />
+    <result column="is_cure" property="isCure" jdbcType="BIT" />
+    <result column="present_situation" property="presentSituation" jdbcType="VARCHAR" />
+    <result column="responsible_doctor" property="responsibleDoctor" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    user_id, the_disease, diagnosis_time, threat_address, is_cure, present_situation, 
+    responsible_doctor
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xiyou.community.medical.manager.pojo.PreviousTreatExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from previous_treat
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from previous_treat
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from previous_treat
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xiyou.community.medical.manager.pojo.PreviousTreatExample" >
+    delete from previous_treat
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xiyou.community.medical.manager.pojo.PreviousTreat" >
+    insert into previous_treat (user_id, the_disease, diagnosis_time, 
+      threat_address, is_cure, present_situation, 
+      responsible_doctor)
+    values (#{userId,jdbcType=INTEGER}, #{theDisease,jdbcType=VARCHAR}, #{diagnosisTime,jdbcType=TIMESTAMP}, 
+      #{threatAddress,jdbcType=VARCHAR}, #{isCure,jdbcType=BIT}, #{presentSituation,jdbcType=VARCHAR}, 
+      #{responsibleDoctor,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xiyou.community.medical.manager.pojo.PreviousTreat" >
+    insert into previous_treat
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="theDisease != null" >
+        the_disease,
+      </if>
+      <if test="diagnosisTime != null" >
+        diagnosis_time,
+      </if>
+      <if test="threatAddress != null" >
+        threat_address,
+      </if>
+      <if test="isCure != null" >
+        is_cure,
+      </if>
+      <if test="presentSituation != null" >
+        present_situation,
+      </if>
+      <if test="responsibleDoctor != null" >
+        responsible_doctor,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="theDisease != null" >
+        #{theDisease,jdbcType=VARCHAR},
+      </if>
+      <if test="diagnosisTime != null" >
+        #{diagnosisTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="threatAddress != null" >
+        #{threatAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="isCure != null" >
+        #{isCure,jdbcType=BIT},
+      </if>
+      <if test="presentSituation != null" >
+        #{presentSituation,jdbcType=VARCHAR},
+      </if>
+      <if test="responsibleDoctor != null" >
+        #{responsibleDoctor,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xiyou.community.medical.manager.pojo.PreviousTreatExample" resultType="java.lang.Integer" >
+    select count(*) from previous_treat
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update previous_treat
+    <set >
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.theDisease != null" >
+        the_disease = #{record.theDisease,jdbcType=VARCHAR},
+      </if>
+      <if test="record.diagnosisTime != null" >
+        diagnosis_time = #{record.diagnosisTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.threatAddress != null" >
+        threat_address = #{record.threatAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isCure != null" >
+        is_cure = #{record.isCure,jdbcType=BIT},
+      </if>
+      <if test="record.presentSituation != null" >
+        present_situation = #{record.presentSituation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.responsibleDoctor != null" >
+        responsible_doctor = #{record.responsibleDoctor,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update previous_treat
+    set user_id = #{record.userId,jdbcType=INTEGER},
+      the_disease = #{record.theDisease,jdbcType=VARCHAR},
+      diagnosis_time = #{record.diagnosisTime,jdbcType=TIMESTAMP},
+      threat_address = #{record.threatAddress,jdbcType=VARCHAR},
+      is_cure = #{record.isCure,jdbcType=BIT},
+      present_situation = #{record.presentSituation,jdbcType=VARCHAR},
+      responsible_doctor = #{record.responsibleDoctor,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiyou.community.medical.manager.pojo.PreviousTreat" >
+    update previous_treat
+    <set >
+      <if test="theDisease != null" >
+        the_disease = #{theDisease,jdbcType=VARCHAR},
+      </if>
+      <if test="diagnosisTime != null" >
+        diagnosis_time = #{diagnosisTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="threatAddress != null" >
+        threat_address = #{threatAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="isCure != null" >
+        is_cure = #{isCure,jdbcType=BIT},
+      </if>
+      <if test="presentSituation != null" >
+        present_situation = #{presentSituation,jdbcType=VARCHAR},
+      </if>
+      <if test="responsibleDoctor != null" >
+        responsible_doctor = #{responsibleDoctor,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xiyou.community.medical.manager.pojo.PreviousTreat" >
+    update previous_treat
+    set the_disease = #{theDisease,jdbcType=VARCHAR},
+      diagnosis_time = #{diagnosisTime,jdbcType=TIMESTAMP},
+      threat_address = #{threatAddress,jdbcType=VARCHAR},
+      is_cure = #{isCure,jdbcType=BIT},
+      present_situation = #{presentSituation,jdbcType=VARCHAR},
+      responsible_doctor = #{responsibleDoctor,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>

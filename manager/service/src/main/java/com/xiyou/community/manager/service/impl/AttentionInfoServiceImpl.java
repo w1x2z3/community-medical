@@ -6,7 +6,6 @@ import com.xiyou.community.medical.manager.pojo.Attentioninfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.io.Serializable;
 
 /**
  * @author wangxinzhi.
@@ -16,7 +15,7 @@ import java.io.Serializable;
  * @Copyright: Xiyou wangxinzhi
  */
 @Service
-public class AttentioninfoServiceImpl implements AttentioninfoService , Serializable {
+public class AttentioninfoServiceImpl implements AttentioninfoService{
     @Resource
     private AttentioninfoMapper attentioninfoMapper;
 
